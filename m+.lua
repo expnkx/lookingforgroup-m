@@ -3,6 +3,7 @@ local LFG_OPT = LibStub("AceAddon-3.0"):GetAddon("LookingForGroup_Options")
 local mplus_name,label_name = C_LFGList.GetActivityInfo(459) -- "Eye of Azshara (Mythic Keystone)"
 
 LFG_OPT.mythic_keystone = mplus_name:sub(C_LFGList.GetActivityGroupInfo(112):len()+1)
+LFG_OPT.mythic_keystone_label_name = label_name
 
 LFG_OPT.Register("category_callbacks",nil,{function(find_args,f_args,s_args)
 	f_args.mplus =
