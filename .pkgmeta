@@ -1,0 +1,4 @@
+package-as: LookingForGroup_M+
+
+required-dependencies:
+	- LookingForGroup
