@@ -120,4 +120,5 @@ LFG_OPT:push("m+",{
 
 LFG_OPT.Register("mplus_callbacks",nil,function(profile,a,s)
 	s.minimum_item_level = GetAverageItemLevel()
+	s.role = true
 end)
