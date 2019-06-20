@@ -1,21 +1,21 @@
 local LFG_OPT = LibStub("AceAddon-3.0"):GetAddon("LookingForGroup_Options")
 
 local function keystone_information(detailed)
-	local maps_to_activity_id =
-	{
-		[244] = 502,
-		[245] = 518,
-		[249] = 514,
-		[252] = 522,
-		[353] = 534,
-		[250] = 504,
-		[247] = 510,
-		[251] = 507,
-		[246] = 526,
-		[248] = 530
-	}
 	local mapid = C_MythicPlus.GetOwnedKeystoneChallengeMapID()
 	if mapid then
+		local maps_to_activity_id =
+		{
+			[244] = 502,
+			[245] = 518,
+			[249] = 514,
+			[252] = 522,
+			[353] = 534,
+			[250] = 504,
+			[247] = 510,
+			[251] = 507,
+			[246] = 526,
+			[248] = 530
+		}
 		return maps_to_activity_id[mapid],C_MythicPlus.GetOwnedKeystoneLevel()
 	end
 end
