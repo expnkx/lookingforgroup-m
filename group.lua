@@ -110,7 +110,7 @@ LFG_OPT:push("m+",{
 				local t = {}
 				local C_MythicPlus = C_MythicPlus
 				if C_MythicPlus.IsWeeklyRewardAvailable() then
-					t[#t+1] = "|cffff0000"
+					t[#t+1] = "|cff00ff00"
 					t[#t+1] = CLAIM_REWARD
 					t[#t+1] = "|r\n"
 				end
@@ -144,7 +144,7 @@ LFG_OPT:push("m+",{
 					t[#t+1] = "|r"
 					for i=1,#affixes do
 						local name,description,filedataid = C_ChallengeMode.GetAffixInfo(affixes[i].id)
-						t[#t+1] = "\n|T"
+						t[#t+1] = "\n\n|T"
 						t[#t+1] = filedataid
 						t[#t+1] = ":0:0:0:0:10:10:1:9:1:9|t|cff8080cc"
 						t[#t+1] = name
