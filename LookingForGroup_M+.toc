@@ -1,4 +1,4 @@
-## Interface: 80100
+## Interface: 80200
 ## Author: cqwrteur
 ## Title: LookingForGroup M+
 ## Version: @project-version@
