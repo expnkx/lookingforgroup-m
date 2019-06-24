@@ -159,8 +159,9 @@ LFG_OPT:push("m+",{
 				if currentWeekBestLevel~=0 then
 					t[#t+1] = "\n\n|cff8080cc"
 					t[#t+1] = currentWeekBestLevel
-					t[#t+1] = "|r "
+					t[#t+1] = "|r |cff00ff00"
 					t[#t+1] = format(string.gsub(MYTHIC_PLUS_CHEST_ITEM_LEVEL_REWARD, "\n",""),weeklyRewardLevel)
+					t[#t+1] = "|r"
 				end
 				return table.concat(t)
 			end,
