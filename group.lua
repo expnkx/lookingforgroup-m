@@ -107,6 +107,9 @@ LFG_OPT:push("m+",{
 		{
 			order = 5,
 			name = function()
+				C_MythicPlus.RequestCurrentAffixes()
+				C_MythicPlus.RequestMapInfo()
+				C_MythicPlus.RequestRewards()
 				local t = {}
 				local C_MythicPlus = C_MythicPlus
 				if C_MythicPlus.IsWeeklyRewardAvailable() then
@@ -151,6 +154,13 @@ LFG_OPT:push("m+",{
 						t[#t+1] = "|r\n"
 						t[#t+1] = description
 					end
+				end
+				local currentWeekBestLevel,weeklyRewardLevel,nextDifficultyWeeklyRewardLevel,nextBestLevel=C_MythicPlus.GetWeeklyChestRewardLevel()
+				if currentWeekBestLevel~=0 then
+					t[#t+1] = "\n\n|cff8080cc"
+					t[#t+1] = currentWeekBestLevel
+					t[#t+1] = "|r "
+					t[#t+1] = format(string.gsub(MYTHIC_PLUS_CHEST_ITEM_LEVEL_REWARD, "\n",""),weeklyRewardLevel)
 				end
 				return table.concat(t)
 			end,
