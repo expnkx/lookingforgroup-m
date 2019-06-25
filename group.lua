@@ -163,11 +163,47 @@ LFG_OPT:push("m+",{
 					t[#t+1] = format(string.gsub(MYTHIC_PLUS_CHEST_ITEM_LEVEL_REWARD, "\n",""),weeklyRewardLevel)
 					t[#t+1] = "|r"
 				end
+				t[#t+1] = "\n\n"
+				t[#t+1] = HONORABLE_KILLS
+				t[#t+1] = ": |cff8080cc"
+				t[#t+1] = GetPVPLifetimeStats()
+				t[#t+1] = "|r\n"
+				t[#t+1] = LFG_LIST_HONOR_LEVEL_INSTR_SHORT
+				local currentHonor = UnitHonor("player")
+				local maxHonor = UnitHonorMax("player")
+				local honorlevel =UnitHonorLevel("player")
+				t[#t+1] = ": |cff8080cc"
+				t[#t+1] = honorlevel
+				t[#t+1] = "|r |cffff00ff("
+				t[#t+1] = format(PVP_PRESTIGE_RANK_UP_NEXT_MAX_LEVEL_REWARD,C_PvP.GetNextHonorLevelForReward(honorlevel))
+				t[#t+1] = ")|r\n"
+				t[#t+1] = HONOR
+				t[#t+1] = ": |cff8080cc"
+				t[#t+1] = currentHonor
+				t[#t+1] = "/"
+				t[#t+1] = maxHonor
+				t[#t+1] = format("|r |cffff00ff(%.2f%%)|r\n",currentHonor/maxHonor*100)
+				local rewardAchieved, lastWeekRewardAchieved, lastWeekRewardClaimed, pvpTierMaxFromWins = C_PvP.GetWeeklyChestInfo()
+				if lastWeekRewardAchieved and not lastWeekRewardClaimed then
+					t[#t+1] = "\n|cff00ff00"
+					t[#t+1] = RATED_PVP_WEEKLY_CHEST_TOOLTIP_COLLECT
+					t[#t+1] = "|r"
+					if pvpTierMaxFromWins ~= -1 then
+						local activityItemLevel, weeklyItemLevel = C_PvP.GetRewardItemLevelsByTierEnum(pvpTierMaxFromWins)
+						t[#t+1] = "\n"
+						t[#t+1] = weeklyItemLevel
+					end
+				end
+				if rewardAchieved then
+					t[#t+1] = "\n|cff00ff00"
+					t[#t+1] = RATED_PVP_WEEKLY_CHEST_EARNED
+					t[#t+1] = "|r"
+				end
 				return table.concat(t)
 			end,
 			fontSize = "large",
 			type = "description"
-		}
+		},
 	}
 })
 
