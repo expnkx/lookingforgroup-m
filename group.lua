@@ -128,11 +128,12 @@ LFG_OPT:push("m+",{
 					best_kl = best_kl + 5
 				end
 				local owned_keystone_level = C_MythicPlus.GetOwnedKeystoneLevel()
+				local rewarded_owned = C_MythicPlus.GetRewardLevelForDifficultyLevel(owned_keystone_level)
 				if owned_keystone_level then
 					t[#t+1] = format(MYTHIC_PLUS_MISSING_WEEKLY_CHEST_REWARD,owned_keystone_level,
-										C_MythicPlus.GetRewardLevelForDifficultyLevel(owned_keystone_level))
+										rewarded_owned)
 				end
-				if owned_keystone_level ~= best_kl then
+				if rewarded_owned ~= best_rw then
 					if owned_keystone_level then
 						t[#t+1] = "\n"
 					end
