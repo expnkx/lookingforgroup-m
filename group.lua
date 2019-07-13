@@ -212,10 +212,11 @@ LFG_OPT:push("m+",{
 LFG_OPT.Register("mplus_callbacks",nil,function(profile,a,s)
 	s.minimum_item_level = GetAverageItemLevel()-2
 	s.role = true
+	s.diverse = true
 end)
 
-if GetCurrentRegion() == 5 then	-- add +5 ilvl for Chinese Region since they do not have Raider.IO
+if GetCurrentRegion() == 5 then	-- add +8 ilvl for Chinese Region since they do not have Raider.IO
 	LFG_OPT.Register("mplus_callbacks",nil,function(profile,a,s)
-		s.fake_minimum_item_level = GetAverageItemLevel()+5
+		s.fake_minimum_item_level = GetAverageItemLevel()+8
 	end)
 end
