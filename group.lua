@@ -2,21 +2,30 @@ local LFG_OPT = LibStub("AceAddon-3.0"):GetAddon("LookingForGroup_Options")
 
 local function keystone_information(detailed)
 	local mapid = C_MythicPlus.GetOwnedKeystoneChallengeMapID()
-	if mapid then
-		local maps_to_activity_id =
-		{
-			[244] = 502,
-			[245] = 518,
-			[249] = 514,
-			[252] = 522,
-			[353] = 534,
-			[250] = 504,
-			[247] = 510,
-			[251] = 507,
-			[246] = 526,
-			[248] = 530
-		}
-		return maps_to_activity_id[mapid],C_MythicPlus.GetOwnedKeystoneLevel()
+	if not mapid then return end
+	local maps_to_group_id =
+	{
+		[244] = 137,  -- Atal'Dazar
+		[245] = 142,  -- Freehold
+		[249] = 141,  -- Kings' Rest
+		[252] = 143,  -- Shrine of the Storm
+		[353] = 146,  -- Siege of Boralus
+		[250] = 139,  -- Temple of Sethraliss
+		[247] = 140,  -- The MOTHERLODE
+		[251] = 138,  -- The Underrot
+		[246] = 144,  -- Tol Dagor
+		[248] = 145  -- Waycrest Manor
+	}
+	local groupid = maps_to_group_id[mapid]
+	if not groupid then return end
+	local labelname = LFG_OPT.mythic_keystone_label_name
+	local groups = C_LFGList.GetAvailableActivities(nil,groupid)
+	local C_LFGList_GetActivityInfo = C_LFGList.GetActivityInfo
+	for i=1,#groups do
+		local fullName, shortName = C_LFGList_GetActivityInfo(groups[i])
+		if shortName == labelname then
+			return groups[i],C_MythicPlus.GetOwnedKeystoneLevel()
+		end
 	end
 end
 
